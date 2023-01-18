@@ -6,7 +6,7 @@ stages:
 php:
   stage: build
   image:
-    name: php:8.0
+    name: php:8.1
   before_script:
     - apt-get update -yqq
     - apt-get install git unzip -yqq
@@ -25,14 +25,6 @@ nodejs:
   artifacts:
       paths:
           - public/build
-
-refactor-lint:
-  stage: test
-  image: node:latest
-  script:
-      - npm install
-      - npm run lint
-  allow_failure: true
 
 deploy:
     stage: deploy
