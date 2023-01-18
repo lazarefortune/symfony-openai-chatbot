@@ -16,16 +16,6 @@ php:
   script:
     - composer install
 
-nodejs:
-  stage: build
-  image: node:latest
-  script:
-      - npm install
-      - npm run build
-  artifacts:
-      paths:
-          - public/build
-
 deploy:
     stage: deploy
     script:
