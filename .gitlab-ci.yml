@@ -14,7 +14,7 @@ php:
     - php composer-setup.php --install-dir=/usr/bin --filename=composer --version=2.0.9
     - php -r "unlink('composer-setup.php');"
   script:
-    - composer install
+    - composer update --no-interaction --no-progress --no-suggest --no-scripts --no-plugins --no-dev
 
 deploy:
     stage: deploy
