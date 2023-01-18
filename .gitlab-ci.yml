@@ -1,0 +1,44 @@
+stages:
+    - build
+    - test
+    - deploy
+
+php:
+  stage: build
+  image:
+    name: php:8.0
+  before_script:
+    - apt-get update -yqq
+    - apt-get install git unzip -yqq
+    - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    - php composer-setup.php --install-dir=/usr/bin --filename=composer --version=2.0.9
+    - php -r "unlink('composer-setup.php');"
+  script:
+    - composer install
+
+nodejs:
+  stage: build
+  image: node:latest
+  script:
+      - npm install
+      - npm run build
+  artifacts:
+      paths:
+          - public/build
+
+refactor-lint:
+  stage: test
+  image: node:latest
+  script:
+      - npm install
+      - npm run lint
+  allow_failure: true
+
+deploy:
+    stage: deploy
+    script:
+        - echo "Deploying to production"
+    only:
+        - main
+    environment:
+        name: production
