@@ -9,7 +9,11 @@
     {{ form_row(form.theme) }}
     {{ form_row(form.submit, {
         label_html: true,
-        label: '🎅 Raconte-moi une histoire ! <img class="htmx-indicator" src="/images/loader.svg" alt="loading" />'
+        label: '🎅 Raconte-moi une histoire ! <br>
+         <span class="htmx-indicator">
+            Un instant, le père noël est en train de préparer votre histoire.
+            <img  src="/images/loader.svg" alt="loading" />
+         </span>'
     }) }}
     {{ form_end(form) }}
 
