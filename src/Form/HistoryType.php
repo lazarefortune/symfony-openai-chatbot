@@ -14,14 +14,15 @@ class HistoryType extends AbstractType
     {
         $builder
             ->add('theme', TextareaType::class, [
-                'label' => 'Choisissez un thème',
+                'label' => 'Dites moi tout',
                 'attr' => [
-                    'placeholder' => 'Ex: Les dinosaures',
+                    'placeholder' => 'ex: Explique moi la nécromancie',
+                    'rows' => 1,
                 ],
                 'required' => true,
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Raconter',
+                'label' => 'Demander à tonton GPT',
                 'attr' => [
                     'hx-post' => '/',
                     'hx-target' => '#history',

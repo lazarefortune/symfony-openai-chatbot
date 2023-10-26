@@ -3,15 +3,15 @@
 {% block title %}🎅 Père noël raconte-moi une histoire{% endblock %}
 
 {% block body %}
-    <h1>🎅 Père noël raconte-moi une histoire</h1>
+    <h1>Discute avec tonton GPT</h1>
 
     {{ form_start(form) }}
     {{ form_row(form.theme) }}
     {{ form_row(form.submit, {
         label_html: true,
-        label: '🎅 Raconte-moi une histoire ! <br>
+        label: 'Demander à tonton GPT <br>
          <span class="htmx-indicator">
-            Un instant, le père noël est en train de préparer votre histoire.
+            Un instant, tonton GPT est en train de réfléchir ...
             <img  src="/images/loader.svg" alt="loading" />
          </span>'
     }) }}

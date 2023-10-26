@@ -17,15 +17,22 @@ class OpenAiService
         $openAiKey = $this->parameterBag->get('OPENAI_API_KEY');
 
         $openAi = new OpenAi($openAiKey);
+            // 0.5 centime => 5000
+            //        5$ => 50000
+        try {
+            $complete = $openAi->completion([
+                'model' => 'text-davinci-003',
+                'prompt' => $theme,
+                'max_tokens' => 3500,
+                'temperature' => 0,
+                'frequency_penalty' => 0.5,
+                'presence_penalty' => 0,
+            ]);
+            dd($complete);
+        } catch (\Exception $e) {
+            return 'Une erreur est survenue';
+        }
 
-        $complete = $openAi->completion([
-            'model' => 'text-davinci-003',
-            'prompt' => 'Père Noël, raconte moi une histoire sur ' . $theme,
-            'max_tokens' => 3500,
-            'temperature' => 0,
-            'frequency_penalty' => 0.5,
-            'presence_penalty' => 0,
-        ]);
 
         $json = json_decode( $complete, true );
 
