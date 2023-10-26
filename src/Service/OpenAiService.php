@@ -21,14 +21,14 @@ class OpenAiService
             //        5$ => 50000
         try {
             $complete = $openAi->completion([
-                'model' => 'text-davinci-003',
+                'model' => 'davinci',
                 'prompt' => $theme,
-                'max_tokens' => 3500,
+                'max_tokens' => 1000,
                 'temperature' => 0,
                 'frequency_penalty' => 0.5,
                 'presence_penalty' => 0,
             ]);
-            dd($complete);
+
         } catch (\Exception $e) {
             return 'Une erreur est survenue';
         }
